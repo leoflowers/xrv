@@ -3,3 +3,6 @@ xrv: xrv.ml
 
 clean:
 	rm -rf xrv.cmi xrv.cmx xrv.o xrv
+
+test: test.sh
+	bash test.sh
