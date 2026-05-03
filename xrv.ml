@@ -17,7 +17,7 @@ let runwithoutput cmd =
   result
 
 let runwithreturncode cmd : int =
-  match Unix.system cmd with
+  match Unix.system (cmd ^ " > /dev/null") with
     | Unix.WEXITED(rc) -> rc
     | _ -> -1
 
@@ -40,7 +40,7 @@ let gitcommit msg =
     | _ -> failwith "could not commit"
 
 let gitpush () = 
-  match runwithreturncode "git push" with
+  match runwithreturncode "git push > /dev/null" with
     | 0 -> ()
     | _ -> failwith "could not push"
 
